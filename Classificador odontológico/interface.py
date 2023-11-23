@@ -13,7 +13,15 @@ st.set_page_config(page_title='Homepage',
 
 # Layout SideBar
 st.sidebar.title('Reference')
-st.sidebar.radio("How to cite this article:", ["Bibtex", "Vancouver", "APA"])
+ref = st.sidebar.radio("How to cite this article:", ["Bibtex", "Vancouver", "APA"])
+
+if ref == "Bibtex":
+    st.write("Bibtex")
+
+elif ref == "Vancouver":
+    st.write("Vancouver")
+else:
+    st.wirte("APA")
 
 st.sidebar.divider()
 c1,c2,c3 = st.sidebar.columns([1,2,1])
