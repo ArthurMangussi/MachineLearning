@@ -1,11 +1,6 @@
 import streamlit as st
-from PIL import Image
 import joblib
-
-img1 = Image.open('Images/logo1.png')
-img2 = Image.open('Images/logo2.png')
-img3 = Image.open('Images/logo3.png')
-
+from bib import bibtex, vancouver, apa, logo1, logo2
 
 st.set_page_config(page_title='Homepage',
                    page_icon=":tooth:",
@@ -14,27 +9,27 @@ st.set_page_config(page_title='Homepage',
 
 # Layout SideBar
 st.sidebar.title('Reference')
-ref = st.sidebar.radio("How to cite this article:", ["Bibtex", "Vancouver", "APA"])
+ref = st.sidebar.radio("How to cite this article:", ["Bibtex", "Vancouver", "APA"], horizontal=True)
 
+# Citation
 if ref == "Bibtex":
-    st.sidebar.info("Bibtex")
+    st.sidebar.markdown(bibtex, unsafe_allow_html=True)
 
 elif ref == "Vancouver":
-    st.sidebar.info("Vancouver")
+    st.sidebar.markdown(vancouver, unsafe_allow_html=True)
 else:
-    st.sidebar.info("APA")
+    st.sidebar.markdown(apa, unsafe_allow_html=True)
 
 st.sidebar.divider()
-c1,c2,c3 = st.sidebar.columns([1,2,1])
+c1,c2 = st.sidebar.columns([2,2])
 
-c2.image(img1)
-c2.image(img3)
-
+c1.image(logo1)
+c2.image(logo2)
 
 # Menu principal
 st.title("Prediction of Periodontal Therapy Response")
 
-form = st.form(key="input",clear_on_submit=False)
+form = st.form(key="input",clear_on_submit=True)
 form.write("Enter patient information:")
 
 c1, c2 = form.columns([1,1])
@@ -49,7 +44,7 @@ ss = c2.number_input("BoP")
 ip = c2.number_input("PI")
 ps = c2.number_input("PD")
 nic = c2.number_input("CAL")
-button = form.form_submit_button("Submit")
+button = form.form_submit_button("Submit", help="Only press the Submit button if all information has been filled in")
 
 # Carregando o modelo Random Forest
 rf = joblib.load("random_forest.joblib")
