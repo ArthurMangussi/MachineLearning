@@ -1,9 +1,10 @@
 import streamlit as st
 from PIL import Image
+import joblib
 
-ita = Image.open('Images/ita.png')
-unifesp = Image.open('Images/unifesp.png')
-eistein = Image.open('Images/eistein.png')
+img1 = Image.open('Images/logo1.png')
+img2 = Image.open('Images/logo2.png')
+img3 = Image.open('Images/logo3.png')
 
 
 st.set_page_config(page_title='Homepage',
@@ -16,24 +17,24 @@ st.sidebar.title('Reference')
 ref = st.sidebar.radio("How to cite this article:", ["Bibtex", "Vancouver", "APA"])
 
 if ref == "Bibtex":
-    st.write("Bibtex")
+    st.sidebar.info("Bibtex")
 
 elif ref == "Vancouver":
-    st.write("Vancouver")
+    st.sidebar.info("Vancouver")
 else:
-    st.wirte("APA")
+    st.sidebar.info("APA")
 
 st.sidebar.divider()
 c1,c2,c3 = st.sidebar.columns([1,2,1])
 
-c2.image(ita, caption="Instituto Tecnológico de Aeronáutica")
-c2.image(unifesp, caption="Universidade Federal de São Paulo")
-c2.image(eistein, caption="Hospital Israelita Albert Eistein")
+c2.image(img1)
+c2.image(img3)
+
 
 # Menu principal
-st.title("Prediction of Periodontal Treatment Response")
+st.title("Prediction of Periodontal Therapy Response")
 
-form = st.form(key="input",clear_on_submit=True)
+form = st.form(key="input",clear_on_submit=False)
 form.write("Enter patient information:")
 
 c1, c2 = form.columns([1,1])
@@ -50,8 +51,32 @@ ps = c2.number_input("PD")
 nic = c2.number_input("CAL")
 button = form.form_submit_button("Submit")
 
+# Carregando o modelo Random Forest
+rf = joblib.load("random_forest.joblib")
+
 if button:
-    st.success("Submited with successful")
+    if omega3 == "Yes":
+        omega3_binario = 1
+    elif omega3 == "No":
+        omega3_binario = 0  
+
+    if gender == "Male":
+        gender_binario = 1
+    elif gender == "Female":
+        gender_binario = 0         
+    
+    features = [[omega3_binario, gender_binario, age, num_teeth, hba1c, ss, ip, ps, nic]]
+    resultado = rf.predict(features)
+    proba = rf.predict_proba(features)
+
+    if resultado[0] == 0:
+        resposta = "Pacient will not achieve endpoint"
+        prob = proba[0][0]
+    else:
+        resposta = "Pacient will achieve endpoint"
+        prob = proba[0][1]
+
+    st.info(f"Prediction: {resposta} with probability of {prob*100:.4f} %")
 
 with st.expander("**Instructions**"):
     st.write("Age: Enter the age of the patient")
