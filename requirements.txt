@@ -1,1 +1,11 @@
 joblib
+sklearn
+pandas
+numpy
+seaborn
+matplotlib
+scikitplot
+xgboost
+catboost
+imblearn
+shap
