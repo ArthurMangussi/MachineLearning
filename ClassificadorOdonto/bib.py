@@ -19,5 +19,5 @@ vancouver = """Castros dos Santos NC, Mangussi AD, Ribeiro TER, Silva RB, Santam
 using artificial intelligence: post hoc analysis of a randomized clinical trial. Journal of Periodontal Research. 2023. doi"""
 
 
-logo1 = "https://github.com/ArthurMangussi/MachineLearning/blob/main/Classificador%20odontol%C3%B3gico/Images/logo1.png?raw=true"
-logo2 = "https://github.com/ArthurMangussi/MachineLearning/blob/main/Classificador%20odontol%C3%B3gico/Images/logo3.png?raw=true"
+logo1 = "https://github.com/ArthurMangussi/MachineLearning/blob/main/ClassificadorOdonto/Images/logo1.png?raw=true"
+logo2 = "https://github.com/ArthurMangussi/MachineLearning/blob/main/ClassificadorOdonto/Images/logo3.png?raw=true"
