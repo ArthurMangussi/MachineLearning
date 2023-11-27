@@ -35,9 +35,9 @@ form.write("Enter patient information:")
 c1, c2 = form.columns([1,1])
 c1.markdown("**General Information**")
 num_teeth = c1.number_input("Number of teeth", min_value=0, max_value=32)
-omega3 = c1.selectbox("Omega-3 and Aspirin", ["Yes", "No"])
 age = c1.number_input("Age", min_value=0, max_value=110)
 gender = c1.selectbox("Gender", ["Male", "Female"])
+omega3 = c1.selectbox("Omega-3 and Aspirin", ["Yes", "No"])
 
 c2.markdown("**Clinical parameters**")
 ps = c2.number_input("PD")
@@ -77,7 +77,7 @@ if button:
 
 with st.expander("**Instructions**"):
     st.write("Age: Enter the patient's age")
-    st.write("Ômega 3 and Aspirin: Yes, if patient used Ômega 3 and Aspirin")
+    st.write("Ômega 3 and Aspirin: Yes, if patient will use Ômega 3 and Aspirin")
     st.write("Gender: Enter the gender of the patient")
     st.write("Number of teeth: Enter the patient's number of teeth")
     st.write("HbA1c: Enter the patient's glycated hemoglobin. You may type the HbA1c level")
