@@ -1,10 +1,10 @@
 joblib
-sklearn
+scikit-learn
 pandas
 numpy
 seaborn
 matplotlib
-scikitplot
+scikit-plot
 xgboost
 catboost
 imblearn
