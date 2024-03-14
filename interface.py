@@ -8,17 +8,17 @@ st.set_page_config(page_title='Homepage',
 
 
 # Layout SideBar
-st.sidebar.title('Reference')
-ref = st.sidebar.radio("How to cite this article:", ["Bibtex", "Vancouver", "APA"], horizontal=True)
+# st.sidebar.title('Reference')
+# ref = st.sidebar.radio("How to cite this article:", ["Bibtex", "Vancouver", "APA"], horizontal=True)
 
-# Citation
-if ref == "Bibtex":
-    st.sidebar.markdown(bibtex, unsafe_allow_html=True)
+# # Citation
+# if ref == "Bibtex":
+#     st.sidebar.markdown(bibtex, unsafe_allow_html=True)
 
-elif ref == "Vancouver":
-    st.sidebar.markdown(vancouver, unsafe_allow_html=True)
-else:
-    st.sidebar.markdown(apa, unsafe_allow_html=True)
+# elif ref == "Vancouver":
+#     st.sidebar.markdown(vancouver, unsafe_allow_html=True)
+# else:
+#     st.sidebar.markdown(apa, unsafe_allow_html=True)
 
 st.sidebar.divider()
 c1,c2 = st.sidebar.columns([2,2])
@@ -76,12 +76,12 @@ if button:
     st.info(f"Prediction: {resposta} with probability of {prob*100:.4f} %")
 
 with st.expander("**Instructions**"):
-    st.write("Age: Enter the patient's age")
-    st.write("Ômega 3 and Aspirin: Yes, if patient will use Ômega 3 and Aspirin")
-    st.write("Gender: Enter the gender of the patient")
-    st.write("Number of teeth: Enter the patient's number of teeth")
-    st.write("HbA1c: Enter the patient's glycated hemoglobin. You may type the HbA1c level")
-    st.write("BoP: Enter the patient's BoP. You may type the BoP level")
-    st.write("PI: Enter the patient's PI. You may type the PI level")
-    st.write("PD: Enter the patient's PD. You may type the PD level")
-    st.write("CAL: Enter the patient's CAL. You may type the CAL level")
+    st.write("Age: Enter the patient's age.")
+    st.write("Omega-3 and Aspirin: Yes, if patient will use Omega-3 and Aspirin.")
+    st.write("Gender: Enter the patient's gender.")
+    st.write("Number of teeth: Enter the patient's number of teeth.")
+    st.write("HbA1c: Enter the patient's glycated hemoglobin (HbA1c) level. You may type the HbA1c level.")
+    st.write("BoP: Enter the patient's full-mouth percentage of bleeding on probing (BoP). You may type the full-mouth % of BoP.")
+    st.write("PI: Enter the patient's full-mouth percentage of visible supragingival biofilm (PI). You may type the % PI level.")
+    st.write("PD: Enter the patient's full-mouth mean probing depth (PD). You may type the mean PD.")
+    st.write("CAL: Enter the patient's full-mouth mean CAL. You may type the mean CAL.")
